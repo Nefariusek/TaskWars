@@ -1,20 +1,19 @@
-import React from 'react';
-import { Segment, Dimmer, Loader, Grid  } from 'semantic-ui-react';
 import axios from 'axios';
+import React from 'react';
+import { Dimmer, Grid, Loader, Segment } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
-import PublicRoute from '../PublicRoute';
-import ItemView from './ItemView';
 import InventoryView from '../Inventory/InventoryView';
+import ItemView from './ItemView';
 
 class ShopContent extends React.Component {
-  state = { 
-    items: [], 
-    id_user: 0, 
-    id_inventory: 0 , 
-    gold: 0, 
-    item: null, 
-    backpack: [], 
-    inventory: null 
+  state = {
+    items: [],
+    id_user: 0,
+    id_inventory: 0,
+    gold: 0,
+    item: null,
+    backpack: [],
+    inventory: null
   }
 
   fetchItems = async () => {
@@ -32,7 +31,7 @@ class ShopContent extends React.Component {
   }
 
   fetchInventory = async (character_id) => {
-    const response = await fetch('/api/characters/'+character_id, setHeaders());
+    const response = await fetch('/api/characters/' + character_id, setHeaders());
     const body = await response.json();
 
     this.setState({ id_inventory: body.inventory_id });
@@ -40,7 +39,7 @@ class ShopContent extends React.Component {
   }
 
   fetchUserGold = async (inventory_id) => {
-    const response = await fetch('/api/inventory/'+inventory_id, setHeaders());
+    const response = await fetch('/api/inventory/' + inventory_id, setHeaders());
     const body = await response.json();
     this.setState({ gold: body.gold, backpack: body.backpack });
     this.getInventory();
@@ -58,8 +57,8 @@ class ShopContent extends React.Component {
       headers: setHeaders(),
     }).then(() => {
 
-      })
-    .catch(error => console.error(error));
+    })
+      .catch(error => console.error(error));
     let afterPay = this.state.gold - item.price;
     this.setState({ gold: afterPay });
     await this.fetchPayGold(afterPay);
@@ -78,7 +77,7 @@ class ShopContent extends React.Component {
       },
       headers: setHeaders(),
     })
-    .catch(error => console.error(error));
+      .catch(error => console.error(error));
   }
 
   componentDidMount() {
@@ -87,23 +86,21 @@ class ShopContent extends React.Component {
   }
 
   getInventory = () => {
-    let inventory = <InventoryView 
-      showGold={false} 
-      buttonActive={false} 
-      ViewEquipped={false} 
-      // id_user={this.state.id_user}
-      // id_inventory={this.state.id_inventory}
-      // backpack={this.state.backpack}
-      // gold={this.state.gold}
-      // items={this.state.items} 
+    let inventory = <InventoryView
+      showGold={false}
+      buttonActive={false}
+      ViewEquipped={false}
+    // id_user={this.state.id_user}
+    // id_inventory={this.state.id_inventory}
+    // backpack={this.state.backpack}
+    // gold={this.state.gold}
+    // items={this.state.items} 
     />
-    this.setState({ inventory: inventory});
+    this.setState({ inventory: inventory });
   }
 
   render() {
-    let activeV;
-    let disabledV;
-    if(!this.state.inventory && !this.state.gold ){
+    if (!this.state.inventory && !this.state.gold) {
       return (
         <Dimmer active>
           <Loader content='Loading' />
@@ -111,26 +108,26 @@ class ShopContent extends React.Component {
 
       );
     }
-    
+
     return (
       <Segment inverted >
-      <Grid doubling container centered columns='equal' padded>
-        <Grid.Row textAlign='center' verticalAlign='top'>
-          <Grid.Column stretched>
-            Your gold: ${this.state.gold}
-            { this.state.inventory !== null ? this.state.inventory : `Your gold: ${this.state.gold}`}
-          </Grid.Column> 
-         </Grid.Row>
+        <Grid doubling container centered columns='equal' padded>
+          <Grid.Row textAlign='center' verticalAlign='top'>
+            <Grid.Column stretched>
+              Your gold: ${this.state.gold}
+              {this.state.inventory !== null ? this.state.inventory : `Your gold: ${this.state.gold}`}
+            </Grid.Column>
+          </Grid.Row>
 
-        {this.state.items.map(item => (
-          <Grid.Column mobile={16} tablet={8} computer={4} stretched>
-            <Segment inverted color='grey'>
-              <ItemView item={item} gold={this.state.gold} buyItem={this.fetchBuyItem} buttonActive={true} />
-            </Segment>
-          </Grid.Column>
-        ))}
-      </Grid>
-      </Segment> 
+          {this.state.items.map(item => (
+            <Grid.Column mobile={16} tablet={8} computer={4} stretched>
+              <Segment inverted color='grey'>
+                <ItemView item={item} gold={this.state.gold} buyItem={this.fetchBuyItem} buttonActive={true} />
+              </Segment>
+            </Grid.Column>
+          ))}
+        </Grid>
+      </Segment>
     );
   }
 }

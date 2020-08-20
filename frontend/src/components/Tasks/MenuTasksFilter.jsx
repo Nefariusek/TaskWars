@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon, Container, Input, Button, Segment, Form, Grid, Loader } from 'semantic-ui-react';
+import { Button, Container, Form, Grid, Icon, Input, Loader, Menu, Segment } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
 import TaskTable from './TasksTable';
 
@@ -87,8 +87,8 @@ class MenuTasksFilter extends React.Component {
             return (usersTasks.every(uTask => {
                 return (
                     (uTask.name !== task.name && uTask.description !== task.description) ||
-                    (uTask.status !== 'in_progress' && uTask.status !== '' && uTask.status !== 'paused') &&
-                    (categoryFilter(uTask, actDate)))
+                    ((uTask.status !== 'in_progress' && uTask.status !== '' && uTask.status !== 'paused') &&
+                    (categoryFilter(uTask, actDate))))
             }));
         });
 
@@ -156,7 +156,7 @@ class MenuTasksFilter extends React.Component {
 
                     <Grid.Column width={10}>
                         {this.state.loading && (
-                                <Loader active size='huge' content='Loading...' inverted />
+                            <Loader active size='huge' content='Loading...' inverted />
                         )}
 
                         <TaskTable ref={this.taskTableRef} />
@@ -175,7 +175,7 @@ function categoryFilter(task, actDate) {
         return actDate - new Date(task.creationTime) > 604800000;
     } else if (task.category === 'Monthly') {
         const taskDate = new Date(task.creationTime);
-        return actDate - taskDate > new Date(taskDate.getFullYear(), taskDate.getMonth()+1, 0).getDate() * 86400000;
+        return actDate - taskDate > new Date(taskDate.getFullYear(), taskDate.getMonth() + 1, 0).getDate() * 86400000;
     }
 
     return true;

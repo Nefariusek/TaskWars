@@ -1,15 +1,15 @@
-.profileViewDiv{
+.profileViewDiv {
     display: grid;
     grid-template-columns: 50% 50%;
     padding: 0 2% 2% 2%;
 }
 
 .profileCharacterDetails {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
 }
 
-.profileCharacterDetails > h1 {
+.profileCharacterDetails>h1 {
     width: 100%;
 }
 
@@ -43,7 +43,7 @@
     justify-content: flex-end;
 }
 
-.statistics{
+.statistics {
     width: 100%;
     bottom: 0;
     padding: 5% 5% 0 0;
@@ -53,7 +53,7 @@
     text-align: right;
 }
 
-.guild{
+.guild {
     padding: 5% 5% 0 5%;
     overflow: hidden;
     width: 90%;

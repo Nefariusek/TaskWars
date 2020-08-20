@@ -1,9 +1,9 @@
-import Avatar from './Avatar';
-import HealthBar from './HealthBar';
-import ExperienceBar from './ExperienceBar';
-import Details from './Details';
-import Statistics from './Statistics';
-import Guilds from './Guilds';
 import AccountButton from './AccountButton';
+import Avatar from './Avatar';
+import Details from './Details';
+import ExperienceBar from './ExperienceBar';
+import Guilds from './Guilds';
+import HealthBar from './HealthBar';
+import Statistics from './Statistics';
 
-export {Avatar, HealthBar, ExperienceBar, Statistics, Details, Guilds, AccountButton};
+export { Avatar, HealthBar, ExperienceBar, Statistics, Details, Guilds, AccountButton };

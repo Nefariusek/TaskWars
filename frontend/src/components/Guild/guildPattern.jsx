@@ -1,9 +1,9 @@
 import React from 'react';
-import { Item, Grid, Container, Segment, Icon, Image, Button, Label, Popup, Step, Header } from 'semantic-ui-react';
-import TopPortal from '../Utils/TopPortal';
-import { NavLink, Route, Redirect } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
+import { Button, Container, Header, Icon, Image, Item, Label, Popup, Segment } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
+import TopPortal from '../Utils/TopPortal';
+
 const axios = require('axios');
 
 class GuildPattern extends React.Component {
@@ -40,7 +40,7 @@ class GuildPattern extends React.Component {
 
     const res = await axios.put(`/api/guilds/${this.props.guild._id}/members`, memberToInsert);
 
-    if (res.status == 200)
+    if (res.status === 200)
       this.state.guildChosen = true;
     this.portalRef.current.handleOpen();
     await new Promise(res => setTimeout(res, 3500));
@@ -55,7 +55,7 @@ class GuildPattern extends React.Component {
 
   checkMember = () => {
     let check = true;
-    this.props.guild.members.map(elem => {
+    this.props.guild.members.forEach(elem => {
       if (elem === this.props.userId) {
         check = false;
       }

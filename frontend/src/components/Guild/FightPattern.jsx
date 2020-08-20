@@ -1,7 +1,6 @@
 import React from 'react';
-import { Item, Segment, Icon, Step, Header, Image } from 'semantic-ui-react';
+import { Header, Icon, Image, Item, Segment, Step } from 'semantic-ui-react';
 import Store from '../../Store';
-const _ = require('lodash');
 
 class FightPattern extends React.Component {
   state = {
@@ -10,14 +9,11 @@ class FightPattern extends React.Component {
   static contextType = Store;
 
   convertToDaysAndHours(t) {
-    let time = t * 3600000;
     const cd = 24 * 60 * 60 * 1000,
-      ch = 60 * 60 * 1000,
+      ch = 60 * 60 * 1000;
+    let time = t * 3600000,
       d = Math.floor(time / cd),
-      h = Math.floor((time - d * cd) / ch),
-      pad = function(n) {
-        return n < 10 ? '0' + n : n;
-      };
+      h = Math.floor((time - d * cd) / ch);
     if (h === 24) {
       d++;
       h = 0;

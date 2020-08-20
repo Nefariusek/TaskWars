@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { Container, Header, Menu, Popup, Icon } from 'semantic-ui-react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
+import Creature from '../Creature';
 import GuildCreating from './guildCreating';
+import GuildDetails from './guildDetails';
 import GuildJoin from './guildJoin';
 import GuildMenu from './guildMenu';
 import YourGuilds from './yourGuilds';
-import GuildDetails from './guildDetails';
-import Creature from '../Creature'
 
 const GuildContent = () => {
   return (

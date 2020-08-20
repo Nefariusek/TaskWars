@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div>
       <HomepageContent />
-      <Container style={{margin: '10px'}}>
+      <Container style={{padding: '10px 0 10px 0'}}>
         <UserBox />
       </Container>
     </div>

@@ -1,10 +1,7 @@
 import React from 'react';
-import { Image, Modal, Header, Grid, Segment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
+import { Image, Modal, Segment } from 'semantic-ui-react';
 import GuildFlagModal from './guildFlagModal';
-import { compareSync } from 'bcryptjs';
-import setHeaders from '../../utils/setHeaders';
-const _ = require('lodash')
 
 class Flag extends React.Component {
   constructor(props) {
@@ -31,7 +28,6 @@ class Flag extends React.Component {
         id: this.props.id
       })
     }
-    this.props.handleClose(this.state.avatar);
   }
 
   onMouseOverAvatar = () => {
@@ -47,70 +43,9 @@ class Flag extends React.Component {
   }
 
   onModalClose = () => {
-    this.setState({ avatar: this.img });
-    this.setState({
-      img: this.props.avatar
-    })
-    // const creature_id = "5e093912540e7c26c0ac53a8";
-    // const guild_id = "5e093912540e7c26c0ac53b4";
-    // const guild_name = "Guild_0";
-    // const task_id = "5e093911540e7c26c0ac5383"
-    // this.addCreatureToFight(creature_id, guild_id, guild_name, task_id);
-    //this.addTaskToMemebers(task_id, guild_id);
+    this.setState({ avatar: this.img, img: this.props.avatar });
+    this.props.handleClose(this.state.avatar);
   }
-
-  // addCreatureToFight = async (creature_id, guild_id, guild_name, task_id) => {
-  //     const creatureResponse = await fetch(`/api/creatures/${creature_id}`, setHeaders());
-  //     const creature = await creatureResponse.json();
-
-  //     //something not work,
-  //     let task_to_dmg = await this.addTaskToMemebers(task_id, guild_id)
-  //     creature.task_to_dmg = task_to_dmg;
-
-  //     const data = {
-  //         name: guild_name,
-  //         current_fight: creature
-  //     }
-  //     const params = {...setHeaders(), body: JSON.stringify(data), method: "PUT"};
-  //     const response = await fetch(`/api/guilds/${guild_id}/current_fight`, params);
-  //     const body = await response.json();
-  // }
-
-  // addTaskToMemebers = async (task_id, guild_id) => {
-  //     const guildResponse = await fetch(`/api/guilds/${guild_id}`, setHeaders());
-  //     const guild = await guildResponse.json();
-
-  //     const taskResponse = await fetch(`/api/tasks/${task_id}`, setHeaders());
-  //     const task = await taskResponse.json();
-
-  //     let data = _.omit(task, ['_id', '__v', '__proto']);
-  //     let params = {...setHeaders(), body: JSON.stringify(data), method: "PUT"};
-
-  //     const task_to_dmg = [];
-  //     const requests = guild.members.map(async (member_id) => {
-  //         const memberResponse = await fetch(`/api/characters/${member_id}`, setHeaders());
-  //         const member = await memberResponse.json();
-
-  //         const memberTasksResponse = await fetch(`/api/questbook/${member.questbook_id}/task`, params);
-  //         const memberTasks = await memberTasksResponse.json();
-  //         return memberTasks.tasks[memberTasks.tasks.length-1]._id;
-  //         // task_to_dmg.push(memberTasks.tasks[memberTasks.tasks.length-1]._id);
-
-  //     })
-
-  //     return Promise.all(requests)
-  //         .then(id =>{
-  //             task_to_dmg.push(...id)
-  //         })
-  //         .then(() => {
-  //             return task_to_dmg;
-  //         })
-  // }
-
-  // atackCreature(creature_id) {
-
-  // }
-
 
   render() {
     return (

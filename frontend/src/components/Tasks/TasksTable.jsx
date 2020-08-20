@@ -14,7 +14,7 @@ class TasksTable extends React.Component {
         let key = 0;
         return arr.map(elem => {
             return (
-                <TaskPattern task={elem} key={key++}/>
+                <TaskPattern task={elem} key={key++} />
             );
         })
     })

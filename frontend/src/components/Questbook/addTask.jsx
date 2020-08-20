@@ -1,20 +1,8 @@
-import React from 'react';
-import _ from 'lodash';
-import {
-  Button,
-  Form,
-  Input,
-  Radio,
-  Select,
-  TextArea,
-  Header,
-  Segment,
-  Message
-} from 'semantic-ui-react'
-import setHeaders from '../../utils/setHeaders';
 import axios from 'axios';
+import React from 'react';
+import { Button, Form, Header, Input, Message, Radio, Segment, Select, TextArea } from 'semantic-ui-react';
+import setHeaders from '../../utils/setHeaders';
 import ErrorMessage from '../ErrorMessage';
-import { number } from 'joi';
 import TopPortal from '../Utils/TopPortal';
 
 const options = [
@@ -27,24 +15,24 @@ const options = [
 class AddTask extends React.Component {
   constructor(props) {
     super(props);
-    this.portalRef= React.createRef();
-  this.state = {
-    name: '',
-    description: '',
-    type: '',
-    category: '',
-    duration: '',
+    this.portalRef = React.createRef();
+    this.state = {
+      name: '',
+      description: '',
+      type: '',
+      category: '',
+      duration: '',
       exp: '',
       gold: '',
-    penalty: '',
-    status: '',
-    submitStatus: false,
-    days: '',
-    hours: '',
-    taskAdded: null,
-     open: false,
-    
-  }
+      penalty: '',
+      status: '',
+      submitStatus: false,
+      days: '',
+      hours: '',
+      taskAdded: null,
+      open: false,
+
+    }
   }
 
 
@@ -67,28 +55,28 @@ class AddTask extends React.Component {
 
   }
 
-  postData = async (questbook_id, state) =>{
+  postData = async (questbook_id, state) => {
     let data = state;
     console.log(data);
     await axios({
       url: `/api/questbook/${questbook_id}/task`,
       method: 'post',
       headers: setHeaders(),
-      data:  {
+      data: {
         name: data.name,
         description: data.description,
         type: data.type,
         category: data.category,
-        duration: `${data.hours*1+data.days*24}`,
-          exp: data.exp,
-          gold: data.gold,
+        duration: `${data.hours * 1 + data.days * 24}`,
+        exp: data.exp,
+        gold: data.gold,
         penalty: data.penalty,
         status: data.status
       }
-    }).then((response) =>{ 
-      if(response.status === 200){
+    }).then((response) => {
+      if (response.status === 200) {
         // this.setState({taskAdded: true});
-            this.portalRef.current.handleOpen();
+        this.portalRef.current.handleOpen();
         new Promise(res => setTimeout(res, 3500));
         this.setState({ open: false });
       } else {
@@ -98,76 +86,85 @@ class AddTask extends React.Component {
       console.log(error)
     });
   }
-  
 
-  
+
+
   onButtonSubmit = async e => {
     e.preventDefault();
-    this.setState({submitStatus:true})
+    this.setState({ submitStatus: true })
     console.log(this.state);
     await this.fetchUser();
 
 
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  
+
 
   nameValidate = (e) => {
-    if(this.state.name === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Name shoud have between 5 and 50 characters'/>}} 
+    if (this.state.name === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Name shoud have between 5 and 50 characters' /> }
+    }
     else { return null }
 
   }
   descriptionValidate = (e) => {
-    if(this.state.description === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Description shoud have between 5 and 50 characters'/>}} 
+    if (this.state.description === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Description shoud have between 5 and 50 characters' /> }
+    }
     else { return null }
 
   }
   categoryValidate = (e) => {
-    if(this.state.category === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Choose category'/>}} 
+    if (this.state.category === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Choose category' /> }
+    }
     else { return null }
 
   }
   typeValidate = (e) => {
-    if(this.state.type === '' && this.state.submitStatus) {
-    return <Message negative content={<ErrorMessage message='Choose type'/>}/>} 
+    if (this.state.type === '' && this.state.submitStatus) {
+      return <Message negative content={<ErrorMessage message='Choose type' />} />
+    }
     else { return null }
 
   }
   penaltyValidate = (e) => {
-    if(this.state.penalty === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Type penalty'/>}} 
-      else { return null }
+    if (this.state.penalty === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Type penalty' /> }
+    }
+    else { return null }
 
   }
   goldValidate = (e) => {
-    if(this.state.gold === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Type gold'/>}} 
-      else { return null }
+    if (this.state.gold === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Type gold' /> }
+    }
+    else { return null }
 
   }
   expValidate = (e) => {
-    if(this.state.exp === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Type exp'/>}} 
-      else { return null }
+    if (this.state.exp === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Type exp' /> }
+    }
+    else { return null }
 
   }
   hoursValidate = (e) => {
-    if(this.state.hours === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Type hours'/>}} 
-      else { return null }
+    if (this.state.hours === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Type hours' /> }
+    }
+    else { return null }
 
   }
   daysValidate = (e) => {
-    if(this.state.days === '' && this.state.submitStatus) {
-    return {content:<ErrorMessage message='Type days'/>}} 
-      else { return null }
+    if (this.state.days === '' && this.state.submitStatus) {
+      return { content: <ErrorMessage message='Type days' /> }
+    }
+    else { return null }
 
   }
 
-  
+
 
 
   render() {
@@ -175,26 +172,24 @@ class AddTask extends React.Component {
       description,
       type,
       category,
-      duration,
-        exp,
-        gold,
+      exp,
+      gold,
       penalty,
-      status,
       days,
       hours
     } = this.state
 
-    
 
-           
+
+
     return (
       <div>
         <Segment inverted>
-        {this.state.taskAdded === true ?
-          <Message color = 'green' header ='Success' content = 'Task added'/> : null }
+          {this.state.taskAdded === true ?
+            <Message color='green' header='Success' content='Task added' /> : null}
           <Form inverted onSubmit={this.onButtonSubmit}>
             <Header inverted>Add new task</Header>
-            
+
             <Form.Group widths='equal'>
               <Form.Input
                 error={this.nameValidate()}
@@ -228,7 +223,7 @@ class AddTask extends React.Component {
             />
             <Form.Group inline >
               <label>Type</label>
-              
+
               <Form.Field
                 control={Radio}
                 label='Physical'
@@ -246,7 +241,7 @@ class AddTask extends React.Component {
                 onChange={this.handleChange}
               />
               <Form.Field
-                
+
                 control={Radio}
                 label='Utility'
                 value='Utility'
@@ -260,7 +255,7 @@ class AddTask extends React.Component {
               <Form.Field
                 error={this.daysValidate()}
                 control={Input}
-                type={<input type='number'/>}
+                type={<input type='number' />}
                 label='Duration: days'
                 placeholder='Days'
                 value={days}
@@ -270,7 +265,7 @@ class AddTask extends React.Component {
               <Form.Field
                 error={this.hoursValidate()}
                 control={Input}
-                type={<input type='number'/>}
+                type={<input type='number' />}
                 label='hours'
                 placeholder='Hours'
                 value={hours}
@@ -278,9 +273,9 @@ class AddTask extends React.Component {
                 onChange={this.handleChange}
               />
               <Form.Field
-              error={this.penaltyValidate()}
+                error={this.penaltyValidate()}
                 control={Input}
-                type={<input type='number'/>}
+                type={<input type='number' />}
                 label='Penalty'
                 placeholder='Penalty'
                 value={penalty}
@@ -290,9 +285,9 @@ class AddTask extends React.Component {
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Field
-              error={this.goldValidate()}
+                error={this.goldValidate()}
                 control={Input}
-                type={<input type='number'/>}
+                type={<input type='number' />}
                 label='Gold'
                 placeholder='Gold'
                 value={gold}
@@ -300,9 +295,9 @@ class AddTask extends React.Component {
                 onChange={this.handleChange}
               />
               <Form.Field
-              error={this.expValidate()}
+                error={this.expValidate()}
                 control={Input}
-                type={<input type='number'/>}
+                type={<input type='number' />}
                 label='Exp'
                 placeholder='Exp'
                 value={exp}
@@ -314,10 +309,10 @@ class AddTask extends React.Component {
           </Form>
         </Segment>
         <TopPortal
-                    ref={this.portalRef}
-                    header={'Success!'}
-                    description={`${this.state.name} has been added to your questbook`}
-                />
+          ref={this.portalRef}
+          header={'Success!'}
+          description={`${this.state.name} has been added to your questbook`}
+        />
       </div>
     );
   }

@@ -11,7 +11,7 @@ class CheckboxToggle extends React.Component {
     }
 
     handleClose = () => this.setState({ portalOpen: false });
-    
+
     handleOpen = async () => {
         this._isMounted = true;
         this.setState({ portalOpen: true });
@@ -26,7 +26,7 @@ class CheckboxToggle extends React.Component {
         this._isMounted = false;
     }
 
-    
+
 
     render() {
         return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Item, Segment, Icon, Button, Step, Header, Image } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
-import setHeaders from '../../utils/setHeaders';
+import { Button, Header, Icon, Image, Item, Segment, Step } from 'semantic-ui-react';
 import Store from '../../Store';
+import setHeaders from '../../utils/setHeaders';
 import TopPortal from '../Utils/TopPortal';
 const _ = require('lodash');
 
@@ -26,9 +26,9 @@ class CreaturePattern extends React.Component {
       current_fight: creature,
     };
     const params = { ...setHeaders(), body: JSON.stringify(data), method: 'PUT' };
-    const response = await fetch(`/api/guilds/${guild_id}/current_fight`, params);
-    const body = await response.json();
-    if (response.status == 200) this.portalRef.current.handleOpen();
+    const response = await fetch(`/api/guilds/${guild_id}/current_fight`, params)
+      .then(resp => resp.json());
+    if (response.status === 200) this.portalRef.current.handleOpen();
     await new Promise(res => setTimeout(res, 3500));
     this.setState({ open: false, fightChosen: true });
   };
@@ -110,14 +110,11 @@ class CreaturePattern extends React.Component {
   };
 
   convertToDaysAndHours(t) {
-    let time = t * 3600000;
     const cd = 24 * 60 * 60 * 1000,
-      ch = 60 * 60 * 1000,
+      ch = 60 * 60 * 1000;
+    let time = t * 3600000,
       d = Math.floor(time / cd),
-      h = Math.floor((time - d * cd) / ch),
-      pad = function(n) {
-        return n < 10 ? '0' + n : n;
-      };
+      h = Math.floor((time - d * cd) / ch);
     if (h === 24) {
       d++;
       h = 0;

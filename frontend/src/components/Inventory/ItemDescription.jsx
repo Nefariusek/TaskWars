@@ -1,6 +1,6 @@
 import React from 'react';
+import { Image, Segment, Table } from 'semantic-ui-react';
 
-import { Segment, Button, Image, Table } from 'semantic-ui-react';
 
 class ItemDescription extends React.Component {
   state = { item: null }
@@ -37,15 +37,15 @@ class ItemDescription extends React.Component {
       <Segment padded inverted color='black'>
 
         <h2>
-          {this.state.item !== null ? 
-            <div> 
+          {this.state.item !== null ?
+            <div>
               <Image src={this.state.item.picture} avatar />
               {this.state.item.name}
-            </div>:
+            </div> :
             ' '
           }
         </h2>
-        <p>{this.state.item !== null ? this.state.item.description :' '}</p>
+        <p>{this.state.item !== null ? this.state.item.description : ' '}</p>
         <Table definition>
           <Table.Body>
             <Table.Row>

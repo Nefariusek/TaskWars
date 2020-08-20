@@ -1,10 +1,8 @@
 import React from 'react';
-import _ from 'lodash';
-import { Button, Container, Grid, Header, Icon, Image, Item, Label, Popup, Segment, Loader } from 'semantic-ui-react';
-import { NavLink, Route, Redirect } from 'react-router-dom';
-import setHeaders from '../../utils/setHeaders';
+import { Redirect } from 'react-router-dom';
+import { Button, Container, Header, Icon, Image, Item, Label, Loader, Segment } from 'semantic-ui-react';
 import Store from '../../Store';
-import { empty } from 'joi';
+import setHeaders from '../../utils/setHeaders';
 
 class YourGuilds extends React.Component {
   state = {
@@ -44,7 +42,7 @@ class YourGuilds extends React.Component {
     const body2 = await response2.json();
     body2.sort((a, b) => { return (a.name > b.name) })
 
-    body2.map(elem => {
+    body2.forEach(elem => {
       if (!(elem.leader === this.state.leaderId)) {
         this.setState({
           guildsMember: [...this.state.guildsMember, elem],
@@ -96,7 +94,7 @@ class YourGuilds extends React.Component {
                 {x.type}
               </Label>
               <Label color='red' attached='top right' as='a' image>
-                <img src={this.state.leaderAvatar} />
+                <img src={this.state.leaderAvatar} alt={"Leader Avatar"} />
                 Leader
               </Label>
               <Item.Description>

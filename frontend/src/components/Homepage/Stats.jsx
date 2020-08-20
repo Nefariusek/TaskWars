@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Item, Header, Divider, Container } from 'semantic-ui-react';
+import { Divider, Header, Item, Segment } from 'semantic-ui-react';
 
 class Stats extends React.Component {
     constructor(props) {
@@ -14,7 +14,6 @@ class Stats extends React.Component {
 
         const tasksCnt = await fetch('/api/questbook/count')
             .then(response => response.json());
-
         this.setState({ userCount: userCnt, tasksCompleted: tasksCnt });
     }
 
@@ -25,8 +24,8 @@ class Stats extends React.Component {
     render() {
         return (
             <Segment textAlign='center' color='green' inverted>
-                <Segment inverted style={{ height: '100%' }}>
-                    <Container style={{marginTop: '13%'}}>
+                <Segment inverted style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}} >
+                    
                         <Item>
                             <Header as='h1' inverted >JOIN</Header>
                             <Header as='h3' inverted >coumunity which has</Header>
@@ -38,7 +37,7 @@ class Stats extends React.Component {
                             <Header as='h3' inverted >we were able to complete</Header>
                             <Header as='h1' inverted >{this.state.tasksCompleted} tasks</Header>
                         </Item>
-                    </Container>
+                    
                 </Segment>
 
             </Segment>

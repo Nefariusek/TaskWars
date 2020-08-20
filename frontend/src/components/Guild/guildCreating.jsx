@@ -1,18 +1,9 @@
-import React, { useContext, Component } from 'react';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Radio,
-  Segment,
-  TextArea,
-} from 'semantic-ui-react'
 import axios from 'axios';
+import React from 'react';
+import { Button, Form, Grid, Header, Radio, Segment, TextArea } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
 import ErrorMessage from '../ErrorMessage';
-import Store from '../../Store';
-import Flag from './guildFlag'
+import Flag from './guildFlag';
 
 class GuildCreate extends React.Component {
   constructor(props) {
@@ -122,7 +113,7 @@ class GuildCreate extends React.Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleClose = (img) => {
-    this.state.flag = img;
+    this.setState({ flag: img });
   }
 
   render() {
@@ -180,7 +171,7 @@ class GuildCreate extends React.Component {
           </Form.Group>
           <Form>
             <Header as='h5' inverted>Guild Flag</Header>
-            <Flag avatar={this.state.flag} handleClose={this.handleClose}/>
+            <Flag avatar={this.state.flag} handleClose={this.handleClose} />
           </Form>
 
           <Grid textAlign='center' padded>

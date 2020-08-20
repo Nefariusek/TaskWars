@@ -1,10 +1,10 @@
 import React from 'react';
-import { Image, Header, Button} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { Button, Image } from 'semantic-ui-react';
 import "./style-avatarModal.css";
 
 class AvatarModal extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -33,7 +33,7 @@ class AvatarModal extends React.Component {
         return (
             <div className="modalAvatar">
                 <div className="modalAvatarHeader">
-                        <h3>Change avatar</h3>
+                    <h3>Change avatar</h3>
                 </div>
                 <div className="modalAvatarImage">
                     <Image id='avatar' src={this.state.img} size='medium' rounded />
@@ -77,7 +77,7 @@ class AvatarModal extends React.Component {
         );
     }
 }
-         
+
 export default AvatarModal;
 
 

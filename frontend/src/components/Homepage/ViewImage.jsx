@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, Dimmer, Header, Modal } from 'semantic-ui-react';
+import { Button, Dimmer, Header, Image, Modal } from 'semantic-ui-react';
 
 class ViewImage extends React.Component {
     constructor(props) {
@@ -32,10 +32,8 @@ class ViewImage extends React.Component {
                 dimmer={{ active, content }}
                 onMouseEnter={this.handleShow}
                 onMouseLeave={this.handleHide}
-                size='medium'
                 src={this.props.src}
                 rounded
-                bordered
             />
         );
     }

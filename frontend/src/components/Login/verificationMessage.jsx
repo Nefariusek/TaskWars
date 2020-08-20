@@ -1,6 +1,5 @@
-import React from 'react'
-import { Button, Container, Form, Message, Grid, Segment } from 'semantic-ui-react'
-const axios = require('axios');
+import React from 'react';
+import { Container, Form, Grid, Message, Segment } from 'semantic-ui-react';
 
 
 class Verified extends React.Component {
@@ -14,8 +13,8 @@ class Verified extends React.Component {
               warning
               header='Your email has not been verified yet. Go to your e-mail account and click on the verification link.'
             />
-          <Container fluid>
-            Emial {localStorage.email} is not verified!
+            <Container fluid>
+              Emial {localStorage.email} is not verified!
           </Container>
           </Segment>
         </Form>

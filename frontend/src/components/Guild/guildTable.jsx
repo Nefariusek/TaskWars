@@ -14,7 +14,7 @@ class GuildTable extends React.Component {
     let key = 0;
     return arr.map(elem => {
       return (
-        <GuildPattern guild={elem} userId={this.props.userId} key={key++} handleClose={this.props.handleClose}/>
+        <GuildPattern guild={elem} userId={this.props.userId} key={key++} handleClose={this.props.handleClose} />
       );
     })
   })

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-
+import { Redirect, Route } from 'react-router-dom';
 import Store from '../../Store';
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isLogged } = useContext(Store);

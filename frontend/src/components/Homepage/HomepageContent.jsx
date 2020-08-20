@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Responsive } from 'semantic-ui-react';
 import Quote from './Quote';
-import Stats from './Stats';
 import Screenshots from './Screenshots';
+import Stats from './Stats';
 
 class HomepageContent extends React.Component {
 
@@ -11,18 +11,26 @@ class HomepageContent extends React.Component {
         return (
             <Container>
                 <Quote />
-                <Grid columns='16'>
-                    <Grid.Row stretched>
-                        <Grid.Column width='4' floated='left'>
-                            <Stats />
-                        </Grid.Column>
-                        <Grid.Column width='12' floated='right' >
-                            <Screenshots />
-                        </Grid.Column>
-                    </Grid.Row>
+                <Responsive minWidth={993} >
+                    <Grid columns='16'>
+                        <Grid.Row stretched>
+                            <Grid.Column width='4' floated='left'>
+                                <Stats />
+                            </Grid.Column>
+                            <Grid.Column width='12' floated='right' >
+                                <Screenshots />
+                            </Grid.Column>
 
-                </Grid>
 
+                        </Grid.Row>
+
+                    </Grid>
+                </Responsive>
+
+                <Responsive maxWidth={992}>
+                    <Stats />
+                    <Screenshots />
+                </Responsive>
             </Container>
         );
     }

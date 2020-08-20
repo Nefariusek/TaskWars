@@ -1,6 +1,6 @@
 import React from 'react';
-import { Segment, Grid, Divider, Button, Icon, Header } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import { Button, Divider, Grid, Header, Icon, Segment, Responsive, Container } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
 
 class UserBox extends React.Component {
@@ -31,29 +31,55 @@ class UserBox extends React.Component {
             return (
                 <Segment color='green' inverted>
                     <Segment textAlign='center' inverted placeholder>
-                        <Grid columns={2} relaxed={'very'} stackable>
-                            <Grid.Column>
+
+                        <Responsive maxWidth={992}>
+                            <Container>
                                 <Icon name='pencil' size='huge' color='green' />
-                                <h2 style={{ marginTop: '10px' }}>Join us now by registering...</h2>
-                                <Button as={NavLink} to={'/register'} color='green'>
+                                <h2 style={{ margin: '10px 20px 10px 20px' }}>Join us now by registering...</h2>
+                                <Button as={NavLink} to={'/register'} color='blue'>
                                     Register!
                                 </Button>
-                            </Grid.Column>
+                            </Container>
 
-                            <Grid.Column>
+                            <Divider horizontal inverted >
+                                OR
+                            </Divider>
+
+                            <Container>
                                 <Icon name='address card' size='huge' color='green' />
-                                <h2 style={{ marginTop: '10px' }}>...let's get to work by logging in</h2>
-                                <Button as={NavLink} to={'/login'} color='green'>
+                                <h2 style={{ margin: '10px' }}>...let's get to work by logging in</h2>
+                                <Button as={NavLink} to={'/login'} color='blue'>
                                     Login!
                                 </Button>
-                            </Grid.Column>
-                        </Grid>
+                            </Container>
+                        
+                        </Responsive>
 
-                        <Divider vertical inverted>
-                            OR
-                        </Divider>
+                        <Responsive minWidth={993}>
+                            <Grid columns={2} relaxed={'very'} stackable>
+                                <Grid.Column>
+                                    <Icon name='pencil' size='huge' color='green' />
+                                    <h2 style={{ marginTop: '10px' }}>Join us now by registering...</h2>
+                                    <Button as={NavLink} to={'/register'} color='blue'>
+                                        Register!
+                                </Button>
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Icon name='address card' size='huge' color='green' />
+                                    <h2 style={{ marginTop: '10px' }}>...let's get to work by logging in</h2>
+                                    <Button as={NavLink} to={'/login'} color='blue'>
+                                        Login!
+                                </Button>
+                                </Grid.Column>
+                            </Grid>
+
+                            <Divider vertical inverted>
+                                OR
+                            </Divider>
+                        </Responsive>
                     </Segment>
-                </Segment>
+                </Segment >
             );
         }
         else return (

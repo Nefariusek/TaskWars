@@ -3,9 +3,9 @@ import { Container } from 'semantic-ui-react';
 import CreaturePattern from './CreaturePattern';
 
 class CreaturesTable extends React.Component {
-  state = { 
-      results: [] 
-    };
+  state = {
+    results: []
+  };
 
   arrayToTable = arr => {
     let key = 0;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon, Container, Input, Button, Segment, Loader, Form, Grid } from 'semantic-ui-react';
+import { Button, Form, Grid, Icon, Input, Loader, Menu, Segment } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
 import GuildTable from './guildTable';
 

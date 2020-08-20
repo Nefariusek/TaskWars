@@ -1,25 +1,10 @@
-import React from 'react';
-import _ from 'lodash';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Icon,
-  Input,
-  Item,
-  Label,
-  Radio,
-  Segment,
-  Image,
-  Container,
-} from 'semantic-ui-react';
-import setHeaders from '../../utils/setHeaders';
 import axios from 'axios';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Button, Container, Form, Grid, Header, Icon, Image, Input, Item, Label, Radio, Segment } from 'semantic-ui-react';
 import Store from '../../Store';
-import { Redirect, NavLink } from 'react-router-dom';
+import setHeaders from '../../utils/setHeaders';
 import TopPortal from '../Utils/TopPortal';
-import { concat } from 'joi';
 import FightPattern from './FightPattern';
 
 class GuildJoin extends React.Component {
@@ -41,7 +26,6 @@ class GuildJoin extends React.Component {
       isLeader: false,
       membersId: [],
       membersName: [],
-      leaderName: '',
       charId: 'All',
       charName: [],
       Tags: '',
@@ -160,7 +144,7 @@ class GuildJoin extends React.Component {
       members: [`${id.character_id}`],
     };
     const res = await axios.put(`/api/guilds/${this.state.guild_id}/members`, memberToInsert);
-    if (res.status == 200)
+    if (res.status === 200)
       this.portalRefAdd.current.handleOpen();
     this.fetchUser();
     this.findMember();
@@ -170,7 +154,7 @@ class GuildJoin extends React.Component {
 
   deleteMember = async id => {
     const res = await axios.delete(`/api/guilds/${this.state.guild_id}/${id._id}`);
-    if (res.status == 200)
+    if (res.status === 200)
       this.portalRefDelete.current.handleOpen();
     this.fetchUser();
     this.findMember();
@@ -255,7 +239,7 @@ class GuildJoin extends React.Component {
             <Item.Header as={'h3'}>Guild details</Item.Header>
             <Item.Header style={{ marginBottom: '10px' }}>Guild leader: {' '}
               <Label as='a' color='black' image>
-                <img src={this.state.leaderName.avatar} />
+                <img src={this.state.leaderName.avatar} alt={"Leader Avatar"} />
                 {this.state.leaderName.name}
               </Label>
             </Item.Header>
@@ -293,36 +277,36 @@ class GuildJoin extends React.Component {
                       <Grid padded>
                         {(this.state.leader === x._id) ? (
                           <Button
-                          inverted
-                          compact
-                          color={this.state.color}
-                          size="mini"
-                        >
-                          <Button.Content visible>
-                            <Icon name="user" />
-                          </Button.Content>
-                        </Button>
-                        ) : (
-                          <Button
                             inverted
-                            animated
                             compact
                             color={this.state.color}
                             size="mini"
-                            onClick={async () => {
-                              await this.ButtonClickDelate(x);
-                            }}
                           >
                             <Button.Content visible>
                               <Icon name="user" />
                             </Button.Content>
-                            <Button.Content hidden>
-                              <Icon name="trash alternate outline" />
-                            </Button.Content>
                           </Button>
-                        )}
+                        ) : (
+                            <Button
+                              inverted
+                              animated
+                              compact
+                              color={this.state.color}
+                              size="mini"
+                              onClick={async () => {
+                                await this.ButtonClickDelate(x);
+                              }}
+                            >
+                              <Button.Content visible>
+                                <Icon name="user" />
+                              </Button.Content>
+                              <Button.Content hidden>
+                                <Icon name="trash alternate outline" />
+                              </Button.Content>
+                            </Button>
+                          )}
                         <Label as='a' image color='black'>
-                          <img src={x.avatar} />
+                          <img src={x.avatar} alt={"Avatar"} />
                           {x.name}
                         </Label>
                       </Grid>
@@ -390,7 +374,7 @@ class GuildJoin extends React.Component {
                                 </Button>
                               )}
                             <Label as='a' image color='black'>
-                              <img src={this.getCharacterAvatar(x)} />
+                              <img src={this.getCharacterAvatar(x)} alt={"Avatar"} />
                               {this.checkCharacterName(x)}{' '}
                               <Label.Detail>{x.name} | {x.email}</Label.Detail>
                             </Label>
@@ -423,7 +407,7 @@ class GuildJoin extends React.Component {
                     <Item key={x._id}>
                       <Item.Content>
                         <Label as='a' image color='black'>
-                          <img src={x.avatar} />
+                          <img src={x.avatar} alt={"Avatar"} />
                           {x.name}
                         </Label>
                       </Item.Content>

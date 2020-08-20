@@ -1,7 +1,7 @@
 import React from 'react';
-import { Item, Segment, Icon, Button, Label, Popup, Step, Header } from 'semantic-ui-react';
-import TopPortal from '../Utils/TopPortal';
+import { Button, Header, Icon, Item, Label, Popup, Segment, Step } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
+import TopPortal from '../Utils/TopPortal';
 const axios = require('axios');
 
 class TaskPattern extends React.Component {
@@ -40,12 +40,12 @@ class TaskPattern extends React.Component {
         };
 
         const res = await axios.put(`/api/questbook/${character.questbook_id}/task`, taskToInsert)
-        .catch(err => {
-            this.portalFailRef.current.handleOpen();
-            this.setState({ open: false });
-        });
+            .catch(err => {
+                this.portalFailRef.current.handleOpen();
+                this.setState({ open: false });
+            });
 
-        if (res && res.status == 200)
+        if (res && res.status === 200)
             this.portalRef.current.handleOpen();
     }
 

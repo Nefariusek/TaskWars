@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message, Grid } from 'semantic-ui-react'
+import { Grid, Message } from 'semantic-ui-react'
 
 const Confirmed = () => (
   <Grid centered>

@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react';
 class ItemEquipped extends React.Component {
   state = { item: this.props.item }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({ item: this.props.item });
   }
 
@@ -12,13 +12,13 @@ class ItemEquipped extends React.Component {
     console.log('Chose action', this.state.item);
   }
 
-  render(){
+  render() {
     return (
       <div>
-        <Button inverted 
-          color='grey' 
+        <Button inverted
+          color='grey'
           onClick={this.chooseAction} >
-          
+
         </Button>
       </div>
     );

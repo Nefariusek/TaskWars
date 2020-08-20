@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { Container, Menu, Popup, Icon } from 'semantic-ui-react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import LoginPanel from './loginPanel';
 import VerificationMessage from './verificationMessage';
 

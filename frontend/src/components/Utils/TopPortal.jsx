@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button, Header, TransitionablePortal, Dimmer } from 'semantic-ui-react';
+import { Button, Header, Segment, TransitionablePortal } from 'semantic-ui-react';
 
 class TopPortal extends React.Component {
     _isMounted = false;
@@ -11,7 +11,7 @@ class TopPortal extends React.Component {
     }
 
     handleClose = () => this.setState({ portalOpen: false });
-    
+
     handleOpen = async () => {
         this._isMounted = true;
         this.setState({ portalOpen: true });
@@ -31,12 +31,12 @@ class TopPortal extends React.Component {
             <TransitionablePortal
                 open={this.state.portalOpen}
                 onClose={this.handleClose}
-                transition={{ animation: 'fly down', duration: '1500' }}>
+                transition={{ animation: 'fly right', duration: '1500' }}>
                 <Segment
                     style={{
-                        left: '40%',
+                        left: '10px',
                         position: 'fixed',
-                        top: '0',
+                        bottom: '10px',
                         zIndex: 1000,
                     }}
                 >
@@ -48,7 +48,6 @@ class TopPortal extends React.Component {
                         onClick={this.handleClose}
                         fluid
                     />
-                    <Dimmer active={this.state.portalOpen} animation='scale' inverted page />
                 </Segment>
             </TransitionablePortal>
 

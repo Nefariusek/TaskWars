@@ -1,13 +1,12 @@
 import React from 'react';
-import { Input, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import "./style-accountModal.css";
+import { Button, Input } from 'semantic-ui-react';
 import setHeaders from '../../utils/setHeaders';
 import TopPortal from '../Utils/TopPortal';
-import ErrorMessage from '../ErrorMessage';
+import "./style-accountModal.css";
 
 class AccountModal extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.portalRefDiff = React.createRef();
@@ -26,55 +25,54 @@ class AccountModal extends React.Component {
     }
 
     componentDidMount() {
-          this.setState({
-              id: this.props.id,
-              email: this.props.email,
-              userName: this.props.userName
-          })
-      } 
+        this.setState({
+            id: this.props.id,
+            email: this.props.email,
+            userName: this.props.userName
+        })
+    }
 
     handleNewPassChange = (event) => {
-        this.setState({newPassword: event.target.value});
+        this.setState({ newPassword: event.target.value });
     }
 
     handleConfirmPassChange = (event) => {
-        this.setState({confirmPassword: event.target.value});
+        this.setState({ confirmPassword: event.target.value });
     }
 
     onPassButtonSubmit = async () => {
-        {
-            console.log(this.state.confirmPassword);
-            console.log(this.state.newPassword);
-            console.log(this.state.id)
-            if(this.state.confirmPassword===this.state.newPassword) {
-                const data = {
-                    email: this.state.email,
-                    password: this.state.newPassword
-                };
-                let params = {...setHeaders(), body: JSON.stringify(data), method: "PUT"};
-                fetch(`/api/users/${this.state.id}/password`, params)
-                    .then((res) => {
-                        if(res.status !== 200) {
-                            this.portalRefWrong.current.handleOpen();
-                        } else {
-                            this.portalRefSucc.current.handleOpen();
-                        }
-                        
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-            } else {
-                this.portalRefDiff.current.handleOpen();
-            }
+        console.log(this.state.confirmPassword);
+        console.log(this.state.newPassword);
+        console.log(this.state.id)
+        if (this.state.confirmPassword === this.state.newPassword) {
+            const data = {
+                email: this.state.email,
+                password: this.state.newPassword
+            };
+            let params = { ...setHeaders(), body: JSON.stringify(data), method: "PUT" };
+            fetch(`/api/users/${this.state.id}/password`, params)
+                .then((res) => {
+                    if (res.status !== 200) {
+                        this.portalRefWrong.current.handleOpen();
+                    } else {
+                        this.portalRefSucc.current.handleOpen();
+                    }
+
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } else {
+            this.portalRefDiff.current.handleOpen();
         }
+
     }
 
     render() {
         return (
             <div className="modalAccount">
                 <div className="modalAccountHeader">
-                        <h3>Change account data</h3>
+                    <h3>Change account data</h3>
                 </div>
                 {/* <div id="modalAccountNameInput">
                     <h4>Change name</h4>

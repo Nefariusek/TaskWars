@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, Header, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { Button, Image } from 'semantic-ui-react';
 import "./style-avatarModal.css";
 
 class FlagModal extends React.Component {
@@ -82,34 +82,34 @@ class FlagModal extends React.Component {
                     </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/smiley_shield.png">
             Slimey
-                    </Button>   
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/world_shield.png">
             World
-                    </Button>    
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/hamburguer_shield.png">
             Chamburger
-                    </Button>  
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/bomb_shield.png">
             Bomb
-                    </Button>     
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/camera_shield.png">
             Camera
-                    </Button>  
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/brushes_shield.png">
             Brushes
-                    </Button>  
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/calendar_shield.png">
             Callendar
-                    </Button>  
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/film_reel_shield.png">
             Film
-                    </Button>  
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/pen_drive_shield.png">
             Pendrive
-                    </Button> 
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/teachers_day_shield.png">
             Apple
-                    </Button> 
+                    </Button>
           <Button basic color='yellow' onClick={this.setImage} value="https://findicons.com/files/icons/2799/flat_icons/128/technical_wrench_shield.png">
             Wrench
                     </Button>

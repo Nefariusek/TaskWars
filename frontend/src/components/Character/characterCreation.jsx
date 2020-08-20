@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, Form, Radio, Header, Segment, Image, Grid } from 'semantic-ui-react';
-import axios from 'axios';
-import setHeaders from '../../utils/setHeaders';
+import { Button, Form, Grid, Header, Image, Radio, Segment } from 'semantic-ui-react';
 import Store from '../../Store';
+import setHeaders from '../../utils/setHeaders';
 import ErrorMessage from '../ErrorMessage';
 import SuccessMessage from '../SuccessMessage';
 import TopPortal from '../Utils/TopPortal';

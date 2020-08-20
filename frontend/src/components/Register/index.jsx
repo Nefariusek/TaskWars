@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { Container, Menu, Popup, Icon } from 'semantic-ui-react';
-import Register from './register';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import ConfirmRegister from './confirmRegister';
+import Register from './register';
 
 const RegisterContent = () => {
   return (

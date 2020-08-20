@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Header, Segment, Input, Button, Loader } from 'semantic-ui-react';
-import axios from 'axios';
-import setHeaders from '../../utils/setHeaders';
+import { Button, Header, Input, Loader, Segment } from 'semantic-ui-react';
 import Store from '../../Store';
+import setHeaders from '../../utils/setHeaders';
 import CreaturesTable from './CreaturesTable';
 
 class CreatureList extends React.Component {

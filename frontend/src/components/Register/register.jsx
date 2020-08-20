@@ -1,17 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-
-import PublicRoute from '../PublicRoute';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Segment,
-} from 'semantic-ui-react'
+import { BrowserRouter } from 'react-router-dom';
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react';
 import Store from '../../Store';
 import ErrorMessage from '../ErrorMessage';
+
 const axios = require('axios');
 
 class Login extends React.Component {
@@ -29,7 +21,7 @@ class Login extends React.Component {
   postUser = async () => {
     try {
       if (this.state.password !== this.state.confirmPassword) {
-        throw 'Both passwords must be the same';
+        throw new Error('Both passwords must be the same');
       }
 
       const res = await axios({
@@ -111,53 +103,70 @@ class Login extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Grid centered>
-          <Segment compact textAlign='left' inverted>
+        <Segment color='purple' inverted>
+          <Segment textAlign='left' inverted>
             <Form success error onSubmit={this.onButtonSubmit} inverted>
-              <Header inverted textAlign='center'>Register</Header>
-              <Form.Input
-                error={this.nameValidate()}
-                label='Name'
-                placeholder='Name'
-                name='name'
-                type='text'
-                value={this.state.name}
-                onChange={e => this.setState({ name: e.target.value })}
-                fluid
-              />
-              <Form.Input
-                error={this.emailValidate()}
-                label='Email'
-                placeholder='Email'
-                name='email'
-                type='email'
-                value={this.state.email}
-                onChange={e => this.setState({ email: e.target.value })}
-                fluid
-              />
-              <Form.Input
-                label='Password'
-                placeholder='Password'
-                name='password'
-                type='password'
-                value={this.state.password}
-                onChange={e => this.setState({ password: e.target.value })}
-              />
-              <Form.Input
-                error={this.passwordValidate()}
-                label='Confirm Password'
-                placeholder='Confirm Password'
-                name='confirmPassword'
-                type='password'
-                value={this.state.confirmPassword}
-                onChange={e => this.setState({ confirmPassword: e.target.value })}
-              />
-              <Grid textAlign='center' padded>
-                <Button color='purple' type='submit'>Submit</Button>
+              <Grid>
+                <Grid.Row centered>
+                  <Header inverted textAlign='center'>Register</Header>
+                </Grid.Row>
+                <Grid.Row columns={2}>
+                  <Grid.Column>
+                    <Form.Input
+                      error={this.nameValidate()}
+                      label='Name'
+                      placeholder='Name'
+                      name='name'
+                      type='text'
+                      value={this.state.name}
+                      onChange={e => this.setState({ name: e.target.value })}
+                      fluid
+                    />
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Form.Input
+                      error={this.emailValidate()}
+                      label='Email'
+                      placeholder='Email'
+                      name='email'
+                      type='email'
+                      value={this.state.email}
+                      onChange={e => this.setState({ email: e.target.value })}
+                      fluid
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={2} centered>
+                  <Grid.Column>
+                    <Form.Input
+                      label='Password'
+                      placeholder='Password'
+                      name='password'
+                      type='password'
+                      value={this.state.password}
+                      onChange={e => this.setState({ password: e.target.value })}
+                    />
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Form.Input
+                      error={this.passwordValidate()}
+                      label='Confirm Password'
+                      placeholder='Confirm Password'
+                      name='confirmPassword'
+                      type='password'
+                      value={this.state.confirmPassword}
+                      onChange={e => this.setState({ confirmPassword: e.target.value })}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row centered>
+                  <Button color='blue' type='submit'>Submit</Button>
+                </Grid.Row>
               </Grid>
             </Form>
           </Segment>
-        </Grid >
+        </Segment>
+
       </BrowserRouter>
     );
   }

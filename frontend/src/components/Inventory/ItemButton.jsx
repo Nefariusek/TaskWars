@@ -1,10 +1,10 @@
 import React from 'react';
-import { Item, Button, Portal, Segment } from 'semantic-ui-react';
+import { Button, Item } from 'semantic-ui-react';
 
 class ItemButton extends React.Component {
   state = { item: this.props.item }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({ item: this.props.item });
   }
 
@@ -13,15 +13,15 @@ class ItemButton extends React.Component {
     this.props.handleOpen();
   }
 
-  render(){
+  render() {
     return (
       <div>
-        <Button inverted 
-          circular 
-          color='grey' 
-          onClick={this.chooseItem} 
+        <Button inverted
+          circular
+          color='grey'
+          onClick={this.chooseItem}
           disabled={this.props.bnActive} >
-          <Item.Image src={ this.props.item.picture } size="mini" wrapped />
+          <Item.Image src={this.props.item.picture} size="mini" wrapped />
         </Button>
       </div>
     );
